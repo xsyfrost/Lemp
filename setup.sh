@@ -14,10 +14,10 @@ sudo sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > 
 sudo apt update
 
 echo "Setup images components ...."
-sudo apt install webp jpegoptim optipng imagemagick build-essential libmcrypt-dev libreadline-dev
+sudo apt -y install webp jpegoptim optipng imagemagick build-essential libmcrypt-dev libreadline-dev
 
 echo "Setup certbot components ...."
-sudo apt install snap
+sudo apt -y install snap
 sudo snap install core
 sudo snap refresh core
 sudo snap install certbot --classic
