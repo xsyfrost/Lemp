@@ -5,7 +5,7 @@ source ./default.conf
 
 echo "Upgrade server ..."
 sudo apt update
-sudo apt upgrade
+sudo apt -y upgrade
 
 echo "Setup basic packages & sury packages ..."
 sudo apt -y install apt-transport-https lsb-release ca-certificates curl htop vim wget fail2ban software-properties-common unzip
