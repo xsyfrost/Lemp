@@ -1,7 +1,7 @@
 #!/bin/bash
 
 phpVersionFull="php$phpVersion"
-sudo apt install php-pear php-imagick $(echo "$phpVersionFull-fpm") $(echo "$phpVersionFull-mysql") $(echo "$phpVersionFull-curl") $(echo "$phpVersionFull-gd") $(echo "$phpVersionFull-intl") $(echo "$phpVersionFull-imap") $(echo "$phpVersionFull-pspell") $(echo "$phpVersionFull-sqlite3") $(echo "$phpVersionFull-tidy") $(echo "$phpVersionFull-xmlrpc") $(echo "$phpVersionFull-xsl") $(echo "$phpVersionFull-xml") $(echo "$phpVersionFull-mbstring") $(echo "$phpVersionFull-zip") $(echo "$phpVersionFull-curl") $(echo "$phpVersionFull-dev")
+sudo apt -y install php-pear php-imagick $(echo "$phpVersionFull-fpm") $(echo "$phpVersionFull-mysql") $(echo "$phpVersionFull-curl") $(echo "$phpVersionFull-gd") $(echo "$phpVersionFull-intl") $(echo "$phpVersionFull-imap") $(echo "$phpVersionFull-pspell") $(echo "$phpVersionFull-sqlite3") $(echo "$phpVersionFull-tidy") $(echo "$phpVersionFull-xmlrpc") $(echo "$phpVersionFull-xsl") $(echo "$phpVersionFull-xml") $(echo "$phpVersionFull-mbstring") $(echo "$phpVersionFull-zip") $(echo "$phpVersionFull-curl") $(echo "$phpVersionFull-dev")
 
 #Activation extension in php.ini
 for t in ${phpModules[@]}; do
