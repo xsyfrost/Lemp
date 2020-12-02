@@ -1,0 +1,7 @@
+FTP & Web user
+Username:Hello
+Password:Boy
+
+Mysql & Phpmyadmin user
+Username:Howareyou
+Password:great
