@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Setup MariaDB & create a user
-apt install mariadb-server mariadb-client
+sudo apt -y install mariadb-server mariadb-client
 
 #Create db and user
 sudo mysql -e "CREATE DATABASE ${mysqlDB} /*\!40100 DEFAULT CHARACTER SET utf8 */;"
