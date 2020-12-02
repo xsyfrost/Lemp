@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt install nginx
+apt -y install nginx
 
 sudo sed -i "s/www-data/$user $group/" /etc/nginx/nginx.conf
 
