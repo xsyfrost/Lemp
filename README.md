@@ -28,3 +28,7 @@ phpmyadminSetup=true #Phpsetup, if the phpmyadminDomain is provided it also crea
 cakephpSetup=true #Create a cakephp repository
 geoipSetup=true #Setup maxmind Geoip. If the credential are provided (AccountID, LicenseKey) it should also update de configuration file
 ```
+EXECUTE THE script
+```sh
+./setup.sh
+```
