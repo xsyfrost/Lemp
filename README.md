@@ -32,14 +32,14 @@ Mysql / User (FTP) passwords are generated and posted at the end if you leave th
 Set the modules you would like to install 
 ```sh
 vim default.conf
-
+#Default values:
 mysqlSetup=true #Mysql (MariaDB)
 phpSetup=true #Php (7.4+)
 nginxSetup=true #Nginx
 domainSetup=true #Certbot with a fully https certificated domaine www + non www and the nginx template configuration (for cakePhp but should work for all the main PHP frameworks). Keep in mind that you should configure your dns first (www, non www) to point to your server
 phpmyadminSetup=true #Phpsetup, if the phpmyadminDomain is provided it also create the certificate with certbot and the nginx configuration
 cakephpSetup=true #Create a cakephp repository
-geoipSetup=true #Setup maxmind Geoip. If the credential are provided (AccountID, LicenseKey) it should also update de configuration file
+geoipSetup=false #Setup maxmind Geoip. If the credential are provided (AccountID, LicenseKey) it should also update de configuration file
 ```
 EXECUTE THE script
 ```sh
