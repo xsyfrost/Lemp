@@ -19,6 +19,7 @@ sudo sed -i "s/;extension=xsl/;extension=xsl\nextension=mcrypt.so/" /etc/php/$(e
 sudo mv ${phpmyadminDir}/config.sample.inc.php ${phpmyadminDir}/config.inc.php
 blowfish_secret=$(openssl rand -base64 32)
 sudo sed -i "/blowfish_secret/c\ \$cfg['blowfish_secret'] = '$blowfish_secret';" ${phpmyadminDir}/config.inc.php
+
 sudo chown -R $(echo "$user:$group") ${phpmyadminDir}
 
 #Next step creation of https certification let's encrypt
@@ -29,12 +30,12 @@ if [ "$phpmyadminSetupDomain" = true ] ; then
                 certbot certonly --non-interactive --agree-tos -m ${email} --nginx -d ${phpmyadminDomain} && certbotSuccess=true
                 #Replace elements in conf file
                 if [ "$certbotSuccess" = true ] ; then
-                    sed "s/{phpmyadminDomain}/$phpmyadminDomain/g; s/{phpmyadminIP}/$phpmyadminIP/g; s/{phpVersion}/$phpVersion/g; s/{phpmyadminDir}/$phpmyadminDir/g"  ./phpmyadmin/template.conf > "/etc/nginx/sites-available/$phpmyadminDomain.conf"
+                    sudo sed "s|{phpmyadminDomain}|$phpmyadminDomain|g; s|{phpmyadminIP}|$phpmyadminIP|g; s|{phpVersion}|$phpVersion|g; s|{phpmyadminDir}|$phpmyadminDir|g" ./phpmyadmin/template.conf > "/etc/nginx/sites-available/$phpmyadminDomain.conf"
                     #Création du lien symbolique
-                    ln -s "/etc/nginx/sites-available/$phpmyadminDomain.conf" "/etc/nginx/sites-enabled/$phpmyadminDomain.conf"
-                    mkdir -p "/etc/nginx/ssl/$phpmyadminDomain/"
-                    openssl rand 48 > "/etc/nginx/ssl/$phpmyadminDomain/ticket.key"
-                    openssl dhparam -out "/etc/nginx/ssl/$phpmyadminDomain/dhparam4.pem" 2048
+                    sudo ln -s "/etc/nginx/sites-available/$phpmyadminDomain.conf" "/etc/nginx/sites-enabled/$phpmyadminDomain.conf"
+                    sudo mkdir -p "/etc/nginx/ssl/$phpmyadminDomain/"
+                    sudo openssl rand 48 > "/etc/nginx/ssl/$phpmyadminDomain/ticket.key"
+                    sudo openssl dhparam -out "/etc/nginx/ssl/$phpmyadminDomain/dhparam4.pem" 2048
                 fi
           fi
       fi
