@@ -20,7 +20,7 @@ sudo apt install unzip && wget https://github.com/xsyfrost/Lemp/archive/main.zip
 ```
 QUICK CONFIGURATION
 
-Add you domain name (wilthout www) withe the configurer and it will create mydomain.com / phpmyadmin.mydomain.com as well as setting your IP as the only accepted by nginx for phpmyadmin.mydomain.com
+Add your domain name (without www) with the configurer and it will create mydomain.com / phpmyadmin.mydomain.com as well as setting your IP as the only accepted by nginx for phpmyadmin.mydomain.com (DENY ALL; ALLOW xxx.xxx.xxx.xxx)
 
 ```sh
 ./configure.sh
