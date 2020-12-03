@@ -18,7 +18,7 @@ cd Lemp-main
 wget https://github.com/xsyfrost/Lemp/archive/main.zip && unzip main.zip && chmod -R +x Lemp-main && cd Lemp-main
 
 ```
-EDIT Configure file
+EDIT Configuration file (default.conf)
 
 Set the modules you would like to install 
 ```sh
