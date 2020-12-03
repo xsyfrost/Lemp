@@ -12,5 +12,6 @@ sudo php -r "unlink('composer-setup.php');"
 sudo mv composer.phar /usr/local/bin/composer
 sudo composer create-project --no-interaction --prefer-dist cakephp/app:~${cakephpVersion} ${cakephpDir}
 if [ -n "$cakephpModules" ]; then
-    cd ${cakephpDir} && sudo composer --no-interaction require ${cakephpModules}
+    currentPath=$(pwd)
+    cd ${cakephpDir} && sudo composer --no-interaction require ${cakephpModules} && cd ${currentPath}
 fi
