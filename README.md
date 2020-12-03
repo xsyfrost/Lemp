@@ -13,6 +13,10 @@ sudo apt install unzip
 unzip main.zip
 chmod +x Lemp-main/*
 cd Lemp-main
+
+#Or in one line
+wget https://github.com/xsyfrost/Lemp/archive/main.zip && unzip main.zip && chmod +x Lemp-main/* && cd Lemp-main
+
 ```
 EDIT Configure file
 
