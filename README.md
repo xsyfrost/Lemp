@@ -18,6 +18,8 @@ EDIT Configure file
 
 Set the modules you would like to install 
 ```sh
+vim default.conf
+
 mysqlSetup=true #Mysql (MariaDB)
 phpSetup=true #Php (7.4+)
 nginxSetup=true #Nginx
