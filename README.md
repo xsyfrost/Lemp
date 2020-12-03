@@ -15,7 +15,7 @@ chmod +x Lemp-main/*
 cd Lemp-main
 
 #Or in one line
-wget https://github.com/xsyfrost/Lemp/archive/main.zip && unzip main.zip && chmod -R +x Lemp-main && cd Lemp-main
+sudo apt install unzip && wget https://github.com/xsyfrost/Lemp/archive/main.zip && unzip main.zip && chmod -R +x Lemp-main && cd Lemp-main
 
 ```
 EDIT Configuration file (default.conf)
