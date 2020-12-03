@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 if [ -d "${phpmyadminDir}" ]; then
     random=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 8 ; echo '')
     mv ${phpmyadminDir} $(echo "$phpmyadminDir_$random")
@@ -7,11 +8,11 @@ fi
 sudo mkdir -p ${phpmyadminDir}
 #Download latest version of phpmyadmin download & unzip it
 
-sudo wget https://files.phpmyadmin.net/phpMyAdmin/${phpMyAdminVersion}/phpMyAdmin-${phpMyAdminVersion}-all-languages.zip -O phpMyAdmin-${phpMyAdminVersion}-all-languages.zip && unzip -o phpMyAdmin-${phpMyAdminVersion}-all-languages.zip -d ${phpmyadminDir} && mv -f /home/phpmyadmin/phpMyAdmin-${phpMyAdminVersion}-all-languages/* ${phpmyadminDir}
+sudo wget https://files.phpmyadmin.net/phpMyAdmin/${phpmyadminVersion}/phpMyAdmin-${phpmyadminVersion}-all-languages.zip -O phpMyAdmin-${phpmyadminVersion}-all-languages.zip && unzip -o phpMyAdmin-${phpmyadminVersion}-all-languages.zip -d ${phpmyadminDir} && mv -f /home/phpmyadmin/phpMyAdmin-${phpmyadminVersion}-all-languages/* ${phpmyadminDir}
 
 #Setup mcrypt for phpmyadmin
 sudo pecl channel-update pecl.php.net
-sudo pecl install mcrypt-$(echo "$phpmyadminMcrypt")
+sudo printf "\n" | sudo pecl install mcrypt-$(echo "$phpmyadminMcrypt")
 sudo sed -i "s/;extension=xsl/;extension=xsl\nextension=mcrypt.so/" /etc/php/$(echo "$phpVersion")/fpm/php.ini
 
 #Move config file and generate blowfish secret
