@@ -22,7 +22,7 @@ echo "Setup images components ...."
 sudo apt -y install webp jpegoptim optipng imagemagick build-essential libmcrypt-dev libreadline-dev
 
 echo "Setup certbot components ...."
-sudo apt -y install snap
+sudo apt -y install snapd
 sudo snap install core
 sudo snap refresh core
 sudo snap install certbot --classic
