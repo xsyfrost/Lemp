@@ -38,7 +38,7 @@ fi
 
 echo "Create Linux user ...."
 sudo groupadd ${group}
-sudo useradd -G ${group} -d /home/web/ ${user} ; echo "$user:$password" | chpasswd
+sudo useradd -g ${group} -d /home/web/ ${user} ; echo "$user:$password" | chpasswd
 
 if [ "$cakephpSetup" = true ] ; then
   sudo chown -R $(echo "$user:$group") ${cakephpDir}
