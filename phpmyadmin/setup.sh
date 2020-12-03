@@ -18,7 +18,7 @@ sudo sed -i "s/;extension=xsl/;extension=xsl\nextension=mcrypt.so/" /etc/php/$(e
 #Move config file and generate blowfish secret
 sudo mv ${phpmyadminDir}/config.sample.inc.php ${phpmyadminDir}/config.inc.php
 blowfish_secret=$(openssl rand -base64 32)
-sudo sed -i "s/\$cfg['blowfish_secret'] = ''/\$cfg['blowfish_secret'] = '$blowfish_secret'/" ${phpmyadminDir}/config.inc.php
+sudo sed -i "/blowfish_secret/c\ \$cfg['blowfish_secret'] = '$blowfish_secret';" ${phpmyadminDir}/config.inc.php
 sudo chown -R $(echo "$user:$group") ${phpmyadminDir}
 
 #Next step creation of https certification let's encrypt
