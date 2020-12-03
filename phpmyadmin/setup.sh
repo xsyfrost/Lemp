@@ -26,7 +26,7 @@ if [ "$phpmyadminSetupDomain" = true ] ; then
       if [ -n "$phpmyadminDomain" ] ; then
           if [ ! -f "/etc/nginx/sites-available/$phpmyadminDomain.conf" ]; then
                 certbotSuccess=false
-                certbot certonly --nginx -d ${phpmyadminDomain} && certbotSuccess=true
+                certbot certonly --non-interactive --agree-tos -m ${email} --nginx -d ${phpmyadminDomain} && certbotSuccess=true
                 #Replace elements in conf file
                 if [ "$certbotSuccess" = true ] ; then
                     sed "s/{phpmyadminDomain}/$phpmyadminDomain/g; s/{phpmyadminIP}/$phpmyadminIP/g; s/{phpVersion}/$phpVersion/g; s/{phpmyadminDir}/$phpmyadminDir/g"  ./phpmyadmin/template.conf > "/etc/nginx/sites-available/$phpmyadminDomain.conf"
