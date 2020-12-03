@@ -22,6 +22,8 @@ sudo sed -i "/blowfish_secret/c\ \$cfg['blowfish_secret'] = '$blowfish_secret';"
 
 sudo chown -R $(echo "$user:$group") ${phpmyadminDir}
 
+sudo mysql -e "CONNECT phpmyadmin; SOURCE ${phpmyadminDir}/sql/create_tables.sql;"
+
 #Next step creation of https certification let's encrypt
 if [ "$phpmyadminSetupDomain" = true ] ; then
       if [ -n "$phpmyadminDomain" ] ; then
