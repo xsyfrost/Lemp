@@ -36,9 +36,19 @@ if [ "$cakephpSetup" = true ] ; then
     source ./cakephp/setup.sh
 fi
 
-echo "Create Linux user ...."
-sudo groupadd ${group}
-sudo useradd -g ${group} -d /home/web/ ${user} ; echo "$user:$password" | chpasswd
+if [ ! $(getent group ${group}) ]; then
+      sudo groupadd ${group}
+fi
+
+if id "${user}" >/dev/null 2>&1; then
+        #User exists
+        echo "Update Linux user password ...."
+        sudo echo "$user:$password" | chpasswd
+else
+        #User does not exist
+        echo "Create Linux user ...."
+        sudo useradd -g ${group} -d /home/web/ ${user} ; echo "$user:$password" | chpasswd
+fi
 
 if [ "$cakephpSetup" = true ] ; then
   sudo chown -R $(echo "$user:$group") ${cakephpDir}
