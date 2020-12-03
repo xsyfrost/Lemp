@@ -9,9 +9,9 @@ if [ "$domainSetup" = true ] ; then
                 if [ "$certbotSuccess" = true ] ; then
 
                     certbotSuccess=false
-                    certbot certonly --nginx -d $(echo "www.$domain") && certbotSuccess=true
+                    certbot certonly --non-interactive --agree-tos -m ${email} --nginx -d $(echo "www.$domain") && certbotSuccess=true
                     if [ "$certbotSuccess" = true ] ; then
-                        sed "s/{domain}/$domain/g; s/{domainDir}/$domainDir/g; s/{phpVersion}/$phpVersion/g"  ./phpmyadmin/template_cakephp.conf > "/etc/nginx/sites-available/$domain.conf"
+                        sed "s|{domain}|$domain|g; s|{domainDir}|$domainDir|g; s|{phpVersion}|$phpVersion|g"  ./phpmyadmin/template_cakephp.conf > "/etc/nginx/sites-available/$domain.conf"
                         #Création du lien symbolique
                         ln -s "/etc/nginx/sites-available/$domain.conf" "/etc/nginx/sites-enabled/$domain.conf"
                         mkdir -p "/etc/nginx/ssl/$domain/"
