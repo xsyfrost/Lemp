@@ -36,6 +36,9 @@ if [ -z "$mysqlPassword" ]; then
     mysqlPassword=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 18 ; echo '')
 fi
 
+if [ "$phpSetup" = true ] ; then
+    source ./php/setup.sh
+fi
 #Creation of cakephp dir before user home because of empty folder troubles
 if [ "$cakephpSetup" = true ] ; then
     source ./cakephp/setup.sh
@@ -69,9 +72,7 @@ fi
 if [ "$mysqlSetup" = true ] ; then
     source ./mysql/setup.sh
 fi
-if [ "$phpSetup" = true ] ; then
-    source ./php/setup.sh
-fi
+
 if [ "$phpmyadminSetup" = true ] ; then
     source ./phpmyadmin/setup.sh
 fi
