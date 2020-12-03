@@ -3,6 +3,11 @@
 #Include configuration file
 source ./default.conf
 
+#Remove unnecessary trailing slashes
+domainDir=${domainDir%/}
+domainDir=${domainDir%/}
+cakephpDir=${cakephpDir%/}
+
 echo "Upgrade server ..."
 sudo apt update
 sudo apt -y upgrade
