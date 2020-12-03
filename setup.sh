@@ -79,6 +79,9 @@ if [ "$geoipSetup" = true ] ; then
     source ./geoip/setup.sh
 fi
 
+#Firewall
+sudo service fail2ban restart
+
 sudo echo "#####################################################"
 sudo echo "#################  WARNING  #########################"
 sudo echo "#####################################################"
