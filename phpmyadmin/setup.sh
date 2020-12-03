@@ -1,8 +1,13 @@
 #!/bin/bash
 
+if [ -d "${phpmyadminDir}" ]; then
+    random=$(tr -dc A-Za-z0-9 </dev/urandom | head -c 8 ; echo '')
+    mv ${phpmyadminDir} $(echo "$phpmyadminDir_$random")
+fi
 sudo mkdir -p ${phpmyadminDir}
 #Download latest version of phpmyadmin download & unzip it
-sudo cd /home && wget https://files.phpmyadmin.net/phpMyAdmin/${phpMyAdminVersion}/phpMyAdmin-${phpMyAdminVersion}-all-languages.zip && unzip phpMyAdmin-${phpMyAdminVersion}-all-languages.zip -d ${phpmyadminDir} && rm ./phpMyAdmin-${phpMyAdminVersion}-all-languages.zip
+
+sudo wget https://files.phpmyadmin.net/phpMyAdmin/${phpMyAdminVersion}/phpMyAdmin-${phpMyAdminVersion}-all-languages.zip -O phpMyAdmin-${phpMyAdminVersion}-all-languages.zip && unzip -o phpMyAdmin-${phpMyAdminVersion}-all-languages.zip -d ${phpmyadminDir} && mv -f /home/phpmyadmin/phpMyAdmin-${phpMyAdminVersion}-all-languages/* ${phpmyadminDir}
 
 #Setup mcrypt for phpmyadmin
 sudo pecl channel-update pecl.php.net
