@@ -11,6 +11,7 @@ Download zip file
 wget https://github.com/xsyfrost/Lemp/archive/main.zip
 sudo apt install unzip
 unzip main.zip
+chmod +x Lemp-main/*
 cd Lemp-main
 ```
 EDIT Configure file
