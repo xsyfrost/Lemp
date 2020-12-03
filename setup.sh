@@ -75,8 +75,15 @@ fi
 if [ "$phpmyadminSetup" = true ] ; then
     source ./phpmyadmin/setup.sh
 fi
+if [ "$domainSetup" = true ] ; then
+    source ./nginx/domain.sh
+fi
 if [ "$geoipSetup" = true ] ; then
     source ./geoip/setup.sh
+fi
+
+if [ "$nginxSetup" = true ] ; then
+    sudo service nginx reload
 fi
 
 #Firewall
