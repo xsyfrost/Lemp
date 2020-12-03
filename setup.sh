@@ -87,6 +87,13 @@ if [ "$nginxSetup" = true ] ; then
     sudo service nginx reload
 fi
 
+if [ "$cakephpSetup" = true ] ; then
+    if [ "$mysqlSetup" = true ] ; then
+          #If Mysql and CakePhp have been installed, then update cakephp database configuration file
+          source ./cakephp/db.sh
+    fi
+fi
+
 #Firewall
 sudo service fail2ban restart
 
