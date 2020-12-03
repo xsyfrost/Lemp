@@ -4,7 +4,7 @@ if [ "$domainSetup" = true ] ; then
       if [ -n "$domain" ] ; then
           if [ ! -f "/etc/nginx/sites-available/$domain.conf" ]; then
                 certbotSuccess=false
-                certbot certonly --nginx -d ${domain} && certbotSuccess=true
+                certbot certonly --non-interactive --agree-tos -m ${email} --nginx -d ${domain} && certbotSuccess=true
                 #Replace elements in conf file
                 if [ "$certbotSuccess" = true ] ; then
 
