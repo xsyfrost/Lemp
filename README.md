@@ -18,8 +18,17 @@ cd Lemp-main
 sudo apt install unzip && wget https://github.com/xsyfrost/Lemp/archive/main.zip && unzip main.zip && chmod -R +x Lemp-main && cd Lemp-main
 
 ```
-EDIT Configuration file (default.conf)
+QUICK CONFIGURATION
 
+Add you domain name (wilthout www) withe the configurer and it will create mydomain.com / phpmyadmin.mydomain.com as well as setting your IP as the only accepted by nginx for phpmyadmin.mydomain.com
+
+```sh
+./configure.sh
+```
+
+EDIT Configuration file (default.conf) if needed
+
+Mysql / User (FTP) passwords are generated and posted at the end if you leave them blank
 Set the modules you would like to install 
 ```sh
 vim default.conf
