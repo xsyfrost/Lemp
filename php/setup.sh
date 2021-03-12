@@ -8,6 +8,9 @@ for t in ${phpModules[@]}; do
   sudo sed -i "s/;extension=$t/extension=$t/" /etc/php/${phpVersion}/fpm/php.ini
 done
 
+#Setup right current cli version
+sudo update-alternatives --set php /usr/bin/php${phpVersion}
+
 #User update for php
 sudo sed -i "s/user = www-data/user = $user/" /etc/php/${phpVersion}/fpm/pool.d/www.conf
 sudo sed -i "s/group = www-data/group = $group/" /etc/php/${phpVersion}/fpm/pool.d/www.conf
