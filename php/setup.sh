@@ -19,6 +19,7 @@ sudo sed -i "s/listen.group = www-data/listen.group = $group/" /etc/php/${phpVer
 
 #rights on socket file /run/php
 sudo chown $(echo "$user:$group") /run/php/$(echo "$phpVersionFull-fpm").sock
+sudo chown $(echo "$user:$group") /run/php/
 
 echo "Starting PHP ..."
 service $(echo "$phpVersionFull-fpm") restart
